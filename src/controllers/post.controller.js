@@ -10,23 +10,6 @@ const imageKit = new ImageKit({
 async function createPostController(req, res){
     console.log(req.body, req.file)
 
-    const token = req.cookies.token
-
-    if(!token){
-        return res.status(401).json({
-            message:"Token not found! Unauthorised access"
-        });
-    }
-
-    let decoded = null
-
-    try{
-        decoded = jwt.verify(token, process.env.JWT_SECRET)
-    }catch(err){
-        return res.status(401).json({
-            message:"Unauthorised access!"
-        })
-    }
 
     const file = await imageKit.files.upload({
         file: await toFile(Buffer.from(req.file.buffer), "file"),
@@ -37,7 +20,7 @@ async function createPostController(req, res){
     const post = await postModel.create({
         caption:req.body.caption,
         imgUrl:file.url,
-        user:decoded.id
+        user:req.user.id
     })
 
     res.status(201).json({
@@ -46,6 +29,49 @@ async function createPostController(req, res){
     })
 }
 
+async function getPostcontroller(req, res) {
+
+    const userID = req.user.id
+
+    const posts = await postModel.find({
+        user:userID
+    })
+
+    res.status(200).json({
+        message:"Posts fetched successfully.",
+        posts
+    })
+}
+
+async function getPostDetailsController(req, res) {
+
+    const userID = req.user.id
+    const postID = req.params.postID
+
+    const post = await postModel.findById(postID)
+
+    if(!post){
+        return res.status(404).json({
+            message:"Post not Found."
+        })
+    }
+
+    const isValid = post.user.toString() === userID
+
+    if(!isValid){
+        return res.status(403).json({
+            message:"Forbidden Content!"
+        });
+    }
+
+    res.status(200).json({
+        message:"posts fetched succesfully",
+        post
+    })
+}
+
 module.exports = {
-    createPostController
+    createPostController,
+    getPostcontroller,
+    getPostDetailsController
 }
