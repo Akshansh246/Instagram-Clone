@@ -2,23 +2,27 @@ main{
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
 }
 
 .side-container{
-    padding: 9rem 4rem;
+    padding: 4rem 4rem;
     text-align: center;
-    width: 55%;
-    font-size: 1.7rem;
-    line-height: 4rem;
+    width: 100%;
+    height: 10rem;
+    position: relative;
 
     .icon{
-        width: 5rem;
         position: absolute;
-        left: 3rem;
-        top: 3rem;
+        width: 5rem;
+        left: 50%;
+        top: 16%;
+        transform: translate(-50%);
+        display: block;
     }
 
     h2{
+        display: none;
         font-weight: 450;
         span{
             background-image: url('data:image/jpeg;base64,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');
@@ -30,12 +34,14 @@ main{
     }
 
     img{
+        display: none;
         width: 70%;
     }
 }
 
 .form-container{
-    width: 45%;
+    width: 100%;
+    height: 90%;
     background-color: #152127;
     border-left: 3px solid rgba(68, 68, 91, 0.521);
     padding: 5rem 3rem;
@@ -124,7 +130,7 @@ main{
     .meta-icon{
         width: 2.5rem;
         position: absolute;
-        bottom: 4rem;
+        bottom: 0.5rem;
         left: 50%;
         transform: translate(-50%, -50%);
         img{
@@ -212,5 +218,55 @@ main{
 
     .to-login:hover{
         background-color: rgba(255, 255, 255, 0.057);
+    }
+}
+
+
+@media (min-width:1023px) {
+    main{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+    }
+    .side-container{
+        padding: 9rem 4rem;
+        font-size: 1.7rem;
+        line-height: 4rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 55%;
+        position: relative;
+        height: 100%;
+
+        .icon{
+            position: absolute;
+            width: 5rem;
+            left: 5rem;
+            top: 3rem;
+        }
+
+        h2{
+            display: block;
+        }
+        img{
+            display: block;
+        }
+    }
+    .form-container{
+        width: 45%;
+        height: 100%;
+
+        .meta-icon{
+        width: 2.5rem;
+        position: absolute;
+        bottom: 4rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        img{
+            width: 100%;
+        }
+    }
     }
 }
