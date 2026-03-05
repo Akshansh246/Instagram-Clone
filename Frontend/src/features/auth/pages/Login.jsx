@@ -19,9 +19,9 @@ const Login = () => {
 
     async function handleSubmit(e) {
         e.preventDefault()
-        handleLogin(username, password)
+        await handleLogin(username, password)
         .then((res)=>{
-            console.log(res)
+            console.log("User logged in",res)
             navigate('/')
         })
     }
