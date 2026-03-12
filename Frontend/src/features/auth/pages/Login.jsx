@@ -27,7 +27,7 @@ const Login = () => {
     }
 
     return (
-        <main>
+        <main className='login-page'>
             <div className="side-container">
                 <img className='icon' src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="" />
                 <h2 className='upper'>See everyday moments from your <span>close friends</span>.</h2>

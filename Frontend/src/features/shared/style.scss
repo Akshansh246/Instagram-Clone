@@ -13,3 +13,120 @@ html{
     background-color: rgb(23, 19, 23);
     color: rgb(216, 214, 214);
 }
+
+
+nav{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        height: fit-content;
+        padding: 1rem 1rem;
+        width: 100%;
+        background-color: rgb(23, 19, 23);
+        border-top: 1px solid rgba(255, 255, 255, 0.101);
+
+        .middle-tray{
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+
+        .top-tray, .bottom-tray{
+            display: none;
+        }
+
+        button{
+            svg{
+                width: 1.5rem;
+            }
+            color: white;
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+
+            .text{
+                display: none;
+            }
+
+        }
+
+    }
+
+@media (min-width:768px) {
+    nav{
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            height: 100%;
+            padding: 2rem 1rem;
+            width: 70px;
+            overflow: hidden;
+            transition: width 0.3s ease;
+
+            .top-tray, .middle-tray, .bottom-tray{
+                display: flex;
+                align-items: start;
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            button{
+                svg{
+                    width: 2rem;
+                }
+                color: white;
+                background: none;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                gap: 1rem;
+                padding: 1rem 1rem;
+                border-radius: 1rem;
+
+                .text{
+                    font-weight: 500;
+                    font-size: 1rem;
+                    white-space: nowrap;
+                    display: block;
+                }
+
+            }
+
+            button:hover{
+                background-color: #ffffff15;
+                .text{
+                    opacity: 1;
+
+                }
+            }
+        }
+
+    nav:hover{
+        width: 220px;
+    }
+}
+
+.back-btn{
+    background: none;
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    svg{
+        width: 2rem;
+    }
+}
