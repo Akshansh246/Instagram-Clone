@@ -19,4 +19,12 @@ postRouter.get('/details/:postID',identifyUser, postController.getPostDetailsCon
 //@description Like feature
 postRouter.post('/like/:postId',identifyUser, postController.likePostController)
 
+
+/**
+ * @route /api/posts/feed
+ * @description to fetch all the posts of users
+ * @access private
+ */
+postRouter.get('/feed', identifyUser, postController.getFeedController)
+
 module.exports = postRouter
